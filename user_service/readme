@@ -1,0 +1,17 @@
+python manage.py runserver
+
+
+http://localhost:3000
+POST
+{
+  "username": "ghada_mrassi",
+  "email": "ghada.mrassi@example.com",
+  "first_name": "Ghada",
+  "last_name": "Mrassi",
+  "role": "admin",
+  "password": "ghada2001"
+}
+
+
+docker build -t user-service .
+docker run -d -p 8000:8000 --name user-service user-service

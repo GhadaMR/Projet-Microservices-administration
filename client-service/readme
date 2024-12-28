@@ -1,0 +1,15 @@
+docker-compose up -d
+
+npm start
+
+http://localhost:3000/api/clients
+{
+  "name": "John Doe Updated",
+  "email": "john.doe.updated@example.com",
+  "phone": "0987654321",
+  "address": "456 Another St"
+}
+
+
+docker build -t client-service .
+docker run -d -p 4000:3000 --name client-microservice2 client-service
