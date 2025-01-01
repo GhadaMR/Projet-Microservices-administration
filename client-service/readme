@@ -1,8 +1,13 @@
 docker-compose up -d
 
 npm start
-
 http://localhost:3000/api/clients
+
+
+avec dapr:
+dapr run --app-id client-service --app-port 3000 -- npm start
+http://localhost:3000/api/clients
+
 {
   "name": "John Doe Updated",
   "email": "john.doe.updated@example.com",

@@ -1,0 +1,8 @@
+Installer Dapr CLI :
+iwr -useb https://raw.githubusercontent.com/dapr/cli/master/install/install.ps1 | iex
+dapr init
+
+
+docker build -t user-service .
+docker build -t client-service .
+docker build -t sale-service .

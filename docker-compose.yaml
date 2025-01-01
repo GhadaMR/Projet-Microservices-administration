@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  user-service:
+    image: user-service
+    ports:
+      - "8000:8000"
+  client-service:
+    image: client-service
+    ports:
+      - "4000:3000"
+  sale-service:
+    image: sales-service
+    ports:
+      - "8085:8085"

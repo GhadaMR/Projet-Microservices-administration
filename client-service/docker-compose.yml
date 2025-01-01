@@ -9,8 +9,8 @@ services:
     volumes:
       - mongodb_data:/data/db
     environment:
-      MONGO_INITDB_ROOT_USERNAME: admin   # Nom d'utilisateur admin
-      MONGO_INITDB_ROOT_PASSWORD: password   # Mot de passe admin
+      MONGO_INITDB_ROOT_USERNAME: admin  
+      MONGO_INITDB_ROOT_PASSWORD: password   
       MONGO_INITDB_DATABASE: client_db
 
 volumes:

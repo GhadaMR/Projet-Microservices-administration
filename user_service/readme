@@ -1,7 +1,12 @@
 python manage.py runserver
-
-
 http://localhost:3000
+
+
+avec dapr:
+dapr run --app-id user-service --app-port 8000 -- python manage.py runserver
+http://localhost:8000
+
+
 POST
 {
   "username": "ghada_mrassi",
