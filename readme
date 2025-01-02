@@ -1,8 +1,19 @@
 Installer Dapr CLI :
 iwr -useb https://raw.githubusercontent.com/dapr/cli/master/install/install.ps1 | iex
 dapr init
+ajouter    C:\dapr     à PATH (env variables)
+
+dapr dashboard -k
+
+Installer kubectl: 
+curl.exe -LO "https://dl.k8s.io/release/v1.32.0/bin/windows/amd64/kubectl.exe"
+
+Copiez kubectl.exe dans C:\Windows\System32
+ajouter    C:\Windows\System32\kubectl.exe    à PATH (env variables)
 
 
-docker build -t user-service .
-docker build -t client-service .
-docker build -t sale-service .
+Installer Minikube:
+https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download
+
+minikube start --driver=hyperv --memory=1900 --disk-size=10g
+

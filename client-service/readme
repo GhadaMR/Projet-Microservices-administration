@@ -17,4 +17,3 @@ http://localhost:3000/api/clients
 
 
 docker build -t client-service .
-docker run -d -p 4000:3000 --name client-microservice2 client-service

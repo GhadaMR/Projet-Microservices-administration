@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sale-service
+  namespace: crm-namespace
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: sale-service
+  template:
+    metadata:
+      labels:
+        app: sale-service
+    spec:
+      containers:
+      - name: sale-service
+        image: ghad2001/sale-service:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: DAPR_HTTP_PORT
+          value: "3500"
+        - name: DAPR_GRPC_PORT
+          value: "50001"
+        args:
+        - "--app-id"
+        - "sale-service"

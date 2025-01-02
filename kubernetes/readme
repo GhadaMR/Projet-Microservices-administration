@@ -1,0 +1,19 @@
+cd deployments
+kubectl apply -f user-service-deployment.yaml
+kubectl apply -f sale-service-deployment.yaml
+kubectl apply -f client-service-deployment.yaml
+
+kubectl cluster-info
+Si vous obtenez une erreur:
+kubectl config use-context minikube
+
+kubectl get deployments
+kubectl get pods
+
+cd services 
+kubectl apply -f sale-service.yaml
+kubectl apply -f user-service.yaml
+kubectl apply -f client-service.yaml
+
+
+kubectl port-forward svc/dapr-dashboard 8081:8080 -n dapr-system

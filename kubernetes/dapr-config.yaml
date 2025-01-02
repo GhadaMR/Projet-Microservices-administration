@@ -1,0 +1,10 @@
+apiVersion: dapr.io/v1alpha1
+kind: Configuration
+metadata:
+  name: crm-dapr-config
+spec:
+  tracing:
+    samplingRate: "1"
+  features:
+    - name: state
+      enabled: true

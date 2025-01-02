@@ -16,4 +16,3 @@ http://localhost:8085/ventes
 
 
 docker build -t sale-service .
-docker run -d -p 8085:8085 --name sale-service sale-service
