@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/users/', UserView.as_view()),
     path('', UserView.as_view()),
+    path('subscribeUserOrder/', UserView.subscribe_user_order),
 ]

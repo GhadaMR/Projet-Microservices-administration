@@ -1,12 +1,10 @@
 package org.acme.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 //import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 @Entity
@@ -15,15 +13,20 @@ public class Vente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty("id")
     private Long id;
 
+
     @Column(nullable = false)
+    @JsonProperty("produit")
     private String produit;
 
     @Column(nullable = false)
+    @JsonProperty("quantite")
     private int quantite;
 
     @Column(nullable = false)
+    @JsonProperty("prix")
     private BigDecimal prix;
 
     // Getters et Setters

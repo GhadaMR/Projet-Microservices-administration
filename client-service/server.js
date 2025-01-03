@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const clientRoutes = require('./routes/clientRoutes');
-
+const { publishOrder } = require('./daprPubSub');
 // Créer une application Express
 const app = express();
 
@@ -20,8 +20,19 @@ mongoose.connect('mongodb://admin:password@localhost:27017/client_db?authSource=
 // Routes
 app.use('/api/clients', clientRoutes);
 
+
+app.post('/publishOrder', async (req, res) => {
+  const vente = req.body;
+  try {
+    await publishOrder(vente);
+    res.status(200).send('Order published');
+  } catch (error) {
+    res.status(500).send('Error publishing order');
+  }
+});
+
 // Lancer le serveur
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 30222;
 app.listen(PORT, () => {
   console.log(`Client Service running on port ${PORT}`);
 });
