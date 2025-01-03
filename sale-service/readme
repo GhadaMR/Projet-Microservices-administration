@@ -4,7 +4,7 @@ http://localhost:8085/ventes
 
 
 avec dapr:
-dapr run --app-id sale-service --app-port 8085 -- mvn quarkus:dev
+dapr run --app-id sale-service --app-port 8085 --resources-path ../components -- mvn quarkus:dev
 http://localhost:8085/ventes
 
 

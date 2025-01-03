@@ -3,7 +3,7 @@ http://localhost:3000
 
 
 avec dapr:
-dapr run --app-id user-service --app-port 8000 -- python manage.py runserver
+dapr run --app-id user-service --app-port 8000 --resources-path ../components -- python manage.py runserver
 http://localhost:8000
 
 

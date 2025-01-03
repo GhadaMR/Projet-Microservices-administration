@@ -1,0 +1,18 @@
+apiVersion: dapr.io/v1alpha1
+kind: Configuration
+metadata:
+  name: daprConfig
+spec:
+  tracing:
+    samplingRate: "1"
+  mtls:
+    enabled: false
+  features:
+    - name: Workflow
+      enabled: true
+  components:
+    componentRetries:
+      retryPolicy:
+        initialInterval: "5s"
+        maxInterval: "30s"
+        maxRetries: 5
