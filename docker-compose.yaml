@@ -9,6 +9,6 @@ services:
     ports:
       - "4000:3000"
   sale-service:
-    image: sales-service
+    image: sale-service
     ports:
       - "8085:8085"

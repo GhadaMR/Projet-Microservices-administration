@@ -1,11 +1,10 @@
 
-mvn spring-boot:run
-
+mvn quarkus:dev
 http://localhost:8085/ventes
 
 
 avec dapr:
-dapr run --app-id sale-service --app-port 8085 --resources-path ../components -- mvn spring-boot:run
+dapr run --app-id sale-service --app-port 8085 --resources-path ../components -- mvn quarkus:dev
 http://localhost:8085/ventes
 
 

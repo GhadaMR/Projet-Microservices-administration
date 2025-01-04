@@ -10,7 +10,7 @@ const app = express();
 app.use(bodyParser.json()); // Pour analyser le corps des requêtes en JSON
 
 // Connexion à MongoDB
-mongoose.connect('mongodb://admin:password@localhost:27017/client_db?authSource=admin', {
+mongoose.connect('mongodb://admin:password@mongodb:27017/client_db?authSource=admin', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
@@ -32,7 +32,7 @@ app.post('/publishOrder', async (req, res) => {
 });
 
 // Lancer le serveur
-const PORT = process.env.PORT || 30222;
+const PORT = process.env.PORT || 3002;
 app.listen(PORT, () => {
   console.log(`Client Service running on port ${PORT}`);
 });

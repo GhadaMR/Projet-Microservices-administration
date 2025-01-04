@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Table(name = "ventes")
 public class Vente {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonProperty("id")
@@ -27,8 +28,17 @@ public class Vente {
 
     @Column(nullable = false)
     @JsonProperty("prix")
-    private BigDecimal prix;
+    private double prix;
 
+    public Vente() {
+
+    }
+
+    public Vente(double prix, int quantite, String produit) {
+        this.prix = prix;
+        this.quantite = quantite;
+        this.produit = produit;
+    }
     // Getters et Setters
     public Long getId() {
         return id;
@@ -54,11 +64,11 @@ public class Vente {
         this.quantite = quantite;
     }
 
-    public BigDecimal getPrix() {
+    public double getPrix() {
         return prix;
     }
 
-    public void setPrix(BigDecimal prix) {
+    public void setPrix(double prix) {
         this.prix = prix;
     }
 }
