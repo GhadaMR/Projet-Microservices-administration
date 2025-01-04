@@ -1,10 +1,19 @@
 version: '3.8'
 services:
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    restart: unless-stopped
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./sale-service/docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+
   ## Tempo
   my-tempo:
     image: grafana/tempo:2.7.0-rc.0
     container_name: my-tempo
-    command: [ "-config.file=/etc/tempo.yaml","-zipkin.http-bind-address=0.0.0.0:9411" ]
+    command: [ "-config.file=/etc/tempo.yaml" ]
     volumes:
       - ./sale-service/docker/tempo/tempo.yml:/etc/tempo.yaml:ro
       - ./sale-service/docker/tempo/tempo-data:/tmp/tempo
