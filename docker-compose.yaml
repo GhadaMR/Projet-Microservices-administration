@@ -1,5 +1,36 @@
 version: '3.8'
 services:
+  ## Tempo
+  my-tempo:
+    image: grafana/tempo:2.7.0-rc.0
+    container_name: my-tempo
+    command: [ "-config.file=/etc/tempo.yaml","-zipkin.http-bind-address=0.0.0.0:9411" ]
+    volumes:
+      - ./sale-service/docker/tempo/tempo.yml:/etc/tempo.yaml:ro
+      - ./sale-service/docker/tempo/tempo-data:/tmp/tempo
+    ports:
+      - "3200:3200" # Tempo
+      - "9411:9411" # zipkin
+
+  my-loki:
+    image: grafana/loki:main
+    container_name: my-loki
+    command: [ "-config.file=/etc/loki/local-config.yaml" ]
+    ports:
+      - "3100:3100"
+
+  my-grafana:
+    image: grafana/grafana
+    container_name: my-grafana
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./sale-service/docker/grafana:/etc/grafana/provisioning/datasources:ro
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=password
+
   user-service:
     image: user-service
     ports:
@@ -10,5 +41,9 @@ services:
       - "4000:3000"
   sale-service:
     image: sale-service
+    depends_on:
+      - my-tempo
+      - my-loki
+    restart: always
     ports:
       - "8085:8085"
